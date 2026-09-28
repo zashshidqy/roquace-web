@@ -1,0 +1,13 @@
+.next
+node_modules
+dist
+build
+*.log
+.DS_Store
+*.md
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.avif

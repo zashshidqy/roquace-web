@@ -1,0 +1,285 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-roquace-soft-gray/20;
+  }
+
+  html {
+    @apply scroll-smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-roquace-black font-sans text-roquace-warm-white;
+  }
+
+  /* Focus visible for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-roquace-accent-blue ring-offset-2 ring-offset-roquace-black;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-roquace-accent-blue/30 text-roquace-warm-white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-roquace-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-roquace-soft-gray/30;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-roquace-soft-gray/50;
+  }
+}
+
+@layer components {
+  /* Prose styles for content */
+  .prose {
+    @apply text-roquace-soft-gray/70;
+  }
+
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  .prose h2 {
+    @apply mb-4 mt-10 font-display text-display-sm text-roquace-warm-white;
+  }
+
+  .prose h3 {
+    @apply mb-3 mt-8 font-display text-display-sm text-roquace-warm-white;
+  }
+
+  .prose ul {
+    @apply mb-4 list-inside list-disc space-y-2;
+  }
+
+  .prose ol {
+    @apply mb-4 list-inside list-decimal space-y-2;
+  }
+
+  .prose li {
+    @apply text-body-base;
+  }
+
+  .prose a {
+    @apply text-roquace-accent-blue underline underline-offset-2 hover:text-blue-400;
+  }
+
+  .prose strong {
+    @apply text-roquace-warm-white;
+  }
+
+  .prose code {
+    @apply rounded bg-roquace-soft-gray/10 px-1.5 py-0.5 font-mono text-sm text-roquace-accent-blue;
+  }
+
+  .prose pre {
+    @apply mb-4 overflow-x-auto rounded-xl border border-roquace-soft-gray/20 bg-roquace-black/50 p-4;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 text-roquace-warm-white;
+  }
+
+  .prose blockquote {
+    @apply my-6 border-l-4 border-roquace-accent-blue pl-6 italic text-roquace-soft-gray/80;
+  }
+
+  .prose img {
+    @apply mb-4 rounded-xl;
+  }
+}
+
+@layer utilities {
+  /* Animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-roquace-warm-white to-roquace-accent-blue bg-clip-text text-transparent;
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Scroll-triggered animations */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-slide-down {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Intersection Observer triggered animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.stagger-item.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation delays for stagger */
+.delay-0 { transition-delay: 0ms; }
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-800 { transition-delay: 800ms; }
+.delay-900 { transition-delay: 900ms; }
+.delay-1000 { transition-delay: 1000ms; }
+
+/* Bounce animation for scroll indicator */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite ease-in-out;
+}
+
+/* Slide down animation for mobile menu */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Scale animation for buttons */
+.scale-hover:hover {
+  transform: scale(1.05);
+}
+
+.scale-hover:active {
+  transform: scale(0.95);
+}
+
+.scale-95:active {
+  transform: scale(0.95);
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s ease-out;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
